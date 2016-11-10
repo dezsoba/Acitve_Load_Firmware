@@ -71,7 +71,7 @@ enum UartCommProtocol{
 	UART_COM_SET_RELAY = 0x05,
 	UART_COM_SET_VOLT_RANGE = 0x06,
 	UART_COM_START_LOAD = 0x07,
-	UART_COM_STOP_LOAD = 0x08,
+	UART_COM_UPDATE_CALIB = 0x08,
 
 	UART_COM_SET_CUR_ALL_0 = 0x10,
 	UART_COM_SET_CUR_CH_1 = 0x11,
@@ -312,22 +312,68 @@ switch(state){
 				  SendShiftReg(&shift_reg_data);
 				  break;
 
+			  case UART_COM_READ_EEPROM_P1:
+
+				  break;
 			  case UART_COM_READ_EEPROM_P2:
 			  	  HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_1, 0, 1, eeprom_buffer, 32, COMM_TIMEOUT);
 			  	  HAL_UART_Transmit(&huart2, eeprom_buffer, 32, COMM_TIMEOUT);
+				  break;
+
+			  case UART_COM_READ_EEPROM_P3:
+
+				  break;
+
+			  case UART_COM_READ_EEPROM_P4:
+
+				  break;
+
+			  case UART_COM_READ_EEPROM_P5:
+
+				  break;
+
+			  case UART_COM_READ_EEPROM_P6:
+
+				  break;
+
+			  case UART_COM_READ_EEPROM_P7:
+
+				  break;
+
+			  case UART_COM_READ_EEPROM_P8:
+
+				  break;
+
+			  case UART_COM_WRITE_EEPROM_P1:
+
 				  break;
 
 			  case UART_COM_WRITE_EEPROM_P2:
 				  HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_2, received_command[1], 1, &received_command[2], 1, COMM_TIMEOUT);
 				  break;
 
-			  case UART_COM_START_LOAD:
-				  state = RUN;
-				  //TODO
+			  case UART_COM_WRITE_EEPROM_P3:
 
-				  //START LOAD
+				  break;
 
-				  //TODO
+			  case UART_COM_WRITE_EEPROM_P4:
+
+				  break;
+
+			  case UART_COM_WRITE_EEPROM_P5:
+
+				  break;
+
+			  case UART_COM_WRITE_EEPROM_P6:
+
+				  break;
+
+			  case UART_COM_WRITE_EEPROM_P7:
+
+				  break;
+
+			  case UART_COM_WRITE_EEPROM_P8:
+
 				  break;
 
 			  default:
@@ -338,20 +384,8 @@ switch(state){
 		  }
 		  break;
 	  case RUN:
-		  if(data_rdy){
-			  switch(received_command[0]){
-
-			  case UART_COM_STOP_LOAD:
-				  state = SETUP;
-				  break;
-			  }
-
-
-			  data_rdy = 0;
-		  }
-
+		  //waiting for read/set/stop commands
 		  break;
-
 	  case LOST:
 		  //going to safe state, signaling error
 		  break;

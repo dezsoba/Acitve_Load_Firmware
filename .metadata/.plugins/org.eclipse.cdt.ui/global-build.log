@@ -1,4 +1,4 @@
-11:29:57 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+13:16:53 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
 make all 
 'Building file: ../Src/main.c'
 'Invoking: MCU GCC Compiler'
@@ -60,7 +60,7 @@ In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load
 C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:504:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
  HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^
-../Src/main.c:352:72: warning: passing argument 5 of 'HAL_I2C_Mem_Write' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+../Src/main.c:321:72: warning: passing argument 5 of 'HAL_I2C_Mem_Write' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
        HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_2, received_command[1], 1, &received_command[2], 1, COMM_TIMEOUT);
                                                                         ^
 In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
@@ -84,11 +84,8 @@ make --no-print-directory post-build
 arm-none-eabi-objcopy -O binary "Active_Load_Firrmware.elf" "Active_Load_Firrmware.bin"
 arm-none-eabi-size "Active_Load_Firrmware.elf"
    text	   data	    bss	    dec	    hex	filename
-  15360	     12	   2500	  17872	   45d0	Active_Load_Firrmware.elf
+  15384	     12	   2500	  17896	   45e8	Active_Load_Firrmware.elf
 ' '
-12:18:12 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
-make all 
-make: Nothing to be done for `all'.
-12:18:32 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+14:17:51 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
 make all 
 make: Nothing to be done for `all'.
