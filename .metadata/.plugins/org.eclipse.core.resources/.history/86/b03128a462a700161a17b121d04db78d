@@ -353,7 +353,7 @@ switch(state){
 				  break;
 
 			  case UART_COM_READ_VOLT_ACTIVE_CHANNELS:
-				  for(i = 0; i < 8; i++){
+				  for(i = 0; i<8; i++){
 					  if(active_channels & (1 << i)){
 						  HAL_UART_Transmit(&huart2, &cycle_count, 1, COMM_TIMEOUT);
 					  }

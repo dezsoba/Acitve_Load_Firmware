@@ -213,8 +213,6 @@ int main(void)
 		uint8_t heatsink_temp = 0;
 		uint16_t shift_reg_data = 0;
 		uint8_t voltage_ranges = 0xFF;
-		uint8_t active_channels = 0;
-		uint8_t i = 0;
 
 		uint8_t eeprom_buffer[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	//	uint16_t eeprom_values_dev[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF};
@@ -299,7 +297,7 @@ switch(state){
 				  break;
 
 			  case UART_COM_SET_ACTIVE_CHANNELS:
-				  active_channels = received_command[1];
+
 				  break;
 
 			  case UART_COM_SET_RELAY:
@@ -344,22 +342,7 @@ switch(state){
 			  switch(received_command[0]){
 
 			  case UART_COM_STOP_LOAD:
-				  //TODO
-
-				  //STOP LOAD
-
-				  //TODO
 				  state = SETUP;
-				  break;
-
-			  case UART_COM_READ_VOLT_ACTIVE_CHANNELS:
-				  for(i = 0; i < 8; i++){
-					  if(active_channels & (1 << i)){
-						  HAL_UART_Transmit(&huart2, &cycle_count, 1, COMM_TIMEOUT);
-					  }
-
-				  }
-
 				  break;
 			  }
 
