@@ -344,38 +344,6 @@ switch(state){
 
 				  break;
 
-			  case UART_COM_WRITE_EEPROM_P1:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P2:
-				  HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_2, received_command[1], 1, &received_command[2], 1, COMM_TIMEOUT);
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P3:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P4:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P5:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P6:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P7:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P8:
-
-				  break;
-
 			  default:
 
 				  break;

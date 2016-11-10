@@ -1,6 +1,6 @@
-10:06:56 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+12:18:32 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
 make all 
 make: Nothing to be done for `all'.
 
-10:06:56 Build Finished (took 606ms)
+12:18:32 Build Finished (took 228ms)
 

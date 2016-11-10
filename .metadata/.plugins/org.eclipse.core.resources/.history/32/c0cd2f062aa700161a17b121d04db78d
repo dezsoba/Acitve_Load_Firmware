@@ -213,8 +213,6 @@ int main(void)
 		uint8_t heatsink_temp = 0;
 		uint16_t shift_reg_data = 0;
 		uint8_t voltage_ranges = 0xFF;
-
-		uint8_t eeprom_buffer[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	//	uint16_t eeprom_values_dev[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF};
 
 		/*	Calibration data: contains 12bit codes that are closest to 0 and 2A outputs */
@@ -310,70 +308,6 @@ switch(state){
 				  shift_reg_data &= 0x00FF;
 				  shift_reg_data |= (received_command[1] << 8);
 				  SendShiftReg(&shift_reg_data);
-				  break;
-
-			  case UART_COM_READ_EEPROM_P1:
-
-				  break;
-			  case UART_COM_READ_EEPROM_P2:
-			  	  HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_1, 0, 1, eeprom_buffer, 32, COMM_TIMEOUT);
-			  	  HAL_UART_Transmit(&huart2, eeprom_buffer, 32, COMM_TIMEOUT);
-				  break;
-
-			  case UART_COM_READ_EEPROM_P3:
-
-				  break;
-
-			  case UART_COM_READ_EEPROM_P4:
-
-				  break;
-
-			  case UART_COM_READ_EEPROM_P5:
-
-				  break;
-
-			  case UART_COM_READ_EEPROM_P6:
-
-				  break;
-
-			  case UART_COM_READ_EEPROM_P7:
-
-				  break;
-
-			  case UART_COM_READ_EEPROM_P8:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P1:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P2:
-				  HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_2, received_command[1], 1, &received_command[2], 1, COMM_TIMEOUT);
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P3:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P4:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P5:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P6:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P7:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P8:
-
 				  break;
 
 			  default:

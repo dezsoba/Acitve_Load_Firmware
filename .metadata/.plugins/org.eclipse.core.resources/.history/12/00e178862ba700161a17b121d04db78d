@@ -313,11 +313,12 @@ switch(state){
 				  break;
 
 			  case UART_COM_READ_EEPROM_P1:
-
-				  break;
-			  case UART_COM_READ_EEPROM_P2:
 			  	  HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_1, 0, 1, eeprom_buffer, 32, COMM_TIMEOUT);
 			  	  HAL_UART_Transmit(&huart2, eeprom_buffer, 32, COMM_TIMEOUT);
+				  break;
+
+			  case UART_COM_READ_EEPROM_P2:
+
 				  break;
 
 			  case UART_COM_READ_EEPROM_P3:
@@ -341,38 +342,6 @@ switch(state){
 				  break;
 
 			  case UART_COM_READ_EEPROM_P8:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P1:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P2:
-				  HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_2, received_command[1], 1, &received_command[2], 1, COMM_TIMEOUT);
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P3:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P4:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P5:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P6:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P7:
-
-				  break;
-
-			  case UART_COM_WRITE_EEPROM_P8:
 
 				  break;
 
