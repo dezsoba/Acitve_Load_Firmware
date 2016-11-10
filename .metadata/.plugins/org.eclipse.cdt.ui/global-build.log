@@ -1,0 +1,256 @@
+10:01:00 **** Build of configuration Debug for project Active_Load_Firrmware ****
+make all 
+'Building file: ../Src/dma.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/dma.d" -MT"Src/dma.o" -o "Src/dma.o" "../Src/dma.c"
+'Finished building: ../Src/dma.c'
+' '
+'Building file: ../Src/gpio.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/gpio.d" -MT"Src/gpio.o" -o "Src/gpio.o" "../Src/gpio.c"
+'Finished building: ../Src/gpio.c'
+' '
+'Building file: ../Src/i2c.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/i2c.d" -MT"Src/i2c.o" -o "Src/i2c.o" "../Src/i2c.c"
+'Finished building: ../Src/i2c.c'
+' '
+'Building file: ../Src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c: In function 'SendShiftReg':
+../Src/main.c:202:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+  HAL_SPI_Transmit(&hspi2, shift_reg_data, 2, COMM_TIMEOUT);
+                           ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:441:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c: In function 'main':
+../Src/main.c:248:36: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+          HAL_UART_Receive(&huart2, &received_command, 1, COMM_TIMEOUT);
+                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:648:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
+ HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:251:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+         HAL_UART_Transmit(&huart2, &received_command, 1, COMM_TIMEOUT);
+                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:647:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:256:36: warning: passing argument 2 of 'HAL_UART_Receive_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+      HAL_UART_Receive_DMA(&huart2, &received_command, 3);
+                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:652:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
+ HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+                   ^
+../Src/main.c:267:52: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
+      HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_2, 0, 1, calib_channel_code_0A, 16, COMM_TIMEOUT);
+                                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:504:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:268:53: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
+      HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_2, 16, 1, calib_channel_code_2A, 16, COMM_TIMEOUT);
+                                                     ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:504:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:215:11: warning: unused variable 'voltage_ranges' [-Wunused-variable]
+   uint8_t voltage_ranges = 0xFF;
+           ^
+'Finished building: ../Src/main.c'
+' '
+'Building file: ../Src/spi.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/spi.d" -MT"Src/spi.o" -o "Src/spi.o" "../Src/spi.c"
+'Finished building: ../Src/spi.c'
+' '
+'Building file: ../Src/stm32f4xx_hal_msp.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/stm32f4xx_hal_msp.d" -MT"Src/stm32f4xx_hal_msp.o" -o "Src/stm32f4xx_hal_msp.o" "../Src/stm32f4xx_hal_msp.c"
+'Finished building: ../Src/stm32f4xx_hal_msp.c'
+' '
+'Building file: ../Src/stm32f4xx_it.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/stm32f4xx_it.d" -MT"Src/stm32f4xx_it.o" -o "Src/stm32f4xx_it.o" "../Src/stm32f4xx_it.c"
+'Finished building: ../Src/stm32f4xx_it.c'
+' '
+'Building file: ../Src/tim.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/tim.d" -MT"Src/tim.o" -o "Src/tim.o" "../Src/tim.c"
+'Finished building: ../Src/tim.c'
+' '
+'Building file: ../Src/usart.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/usart.d" -MT"Src/usart.o" -o "Src/usart.o" "../Src/usart.c"
+'Finished building: ../Src/usart.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_cortex.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_dma_ex.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ex.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_i2c_ex.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_spi.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_tim_ex.c'
+' '
+'Building file: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.d" -MT"Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o" -o "Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.o" "../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c"
+'Finished building: ../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_uart.c'
+' '
+'Building file: ../Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f411xe.s'
+'Invoking: MCU GCC Assembler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-as -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -g -o "Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f411xe.o" "../Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f411xe.s"
+'Finished building: ../Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/gcc/startup_stm32f411xe.s'
+' '
+'Building file: ../Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.d" -MT"Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.o" -o "Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.o" "../Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c"
+'Finished building: ../Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c'
+' '
+'Building target: Active_Load_Firrmware.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F411RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "Active_Load_Firrmware.elf" @"objects.list"  
+'Finished building target: Active_Load_Firrmware.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "Active_Load_Firrmware.elf" "Active_Load_Firrmware.bin"
+arm-none-eabi-size "Active_Load_Firrmware.elf"
+   text	   data	    bss	    dec	    hex	filename
+  14724	     12	   2500	  17236	   4354	Active_Load_Firrmware.elf
+' '
+10:01:25 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+make all 
+make: Nothing to be done for `all'.
+10:01:32 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+make all 
+make: Nothing to be done for `all'.
+10:01:43 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+make all 
+make: Nothing to be done for `all'.
