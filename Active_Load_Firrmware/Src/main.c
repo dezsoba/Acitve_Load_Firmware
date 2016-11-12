@@ -249,15 +249,15 @@ int main(void)
   /* USER CODE BEGIN 2 */
   SendShiftReg(&shift_reg_data);
   while(received_command[0] != UART_COM_SYS_READ){
-      	  HAL_UART_Receive(&huart2, &received_command, 1, COMM_TIMEOUT);
+      	  HAL_UART_Receive(&huart1, &received_command, 1, COMM_TIMEOUT);
         }
         /* SEND SYSTEM INFO BEGINS */
-        HAL_UART_Transmit(&huart2, &received_command, 1, COMM_TIMEOUT);
+        HAL_UART_Transmit(&huart1, &received_command, 1, COMM_TIMEOUT);
 
 
         /* SEND SYSTEM INFO ENDS */
         HAL_TIM_PWM_Start(&htim11, TIM_CHANNEL_1);
-  	  HAL_UART_Receive_DMA(&huart2, &received_command, 3);
+  	  HAL_UART_Receive_DMA(&huart1, &received_command, 3);
 
   	  /*LOAD CALIBRATION DATA BEGINS*/
 
@@ -291,7 +291,7 @@ switch(state){
 			  switch(received_command[0]){
 
 			  case UART_COM_TMPREAD:
-				  HAL_UART_Transmit(&huart2, &heatsink_temp, 1, COMM_TIMEOUT);
+				  HAL_UART_Transmit(&huart1, &heatsink_temp, 1, COMM_TIMEOUT);
 				  break;
 
 			  case UART_COM_SYS_RESET:
@@ -316,7 +316,7 @@ switch(state){
 
 			  case UART_COM_READ_EEPROM_P2:
 			  	  HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_1, 0, 1, eeprom_buffer, 32, COMM_TIMEOUT);
-			  	  HAL_UART_Transmit(&huart2, eeprom_buffer, 32, COMM_TIMEOUT);
+			  	  HAL_UART_Transmit(&huart1, eeprom_buffer, 32, COMM_TIMEOUT);
 				  break;
 
 			  case UART_COM_WRITE_EEPROM_P2:
@@ -355,7 +355,7 @@ switch(state){
 			  case UART_COM_READ_VOLT_ACTIVE_CHANNELS:
 				  for(i = 0; i < 8; i++){
 					  if(active_channels & (1 << i)){
-						  HAL_UART_Transmit(&huart2, &cycle_count, 1, COMM_TIMEOUT);
+						  HAL_UART_Transmit(&huart1, &cycle_count, 1, COMM_TIMEOUT);
 					  }
 
 				  }
