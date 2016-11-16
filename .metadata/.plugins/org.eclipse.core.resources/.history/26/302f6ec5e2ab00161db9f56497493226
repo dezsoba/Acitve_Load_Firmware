@@ -73,7 +73,7 @@ enum UartCommProtocol{
 	UART_COM_START_LOAD = 0x07,
 	UART_COM_STOP_LOAD = 0x08,
 
-	UART_COM_SET_CUR_ALL = 0x10,
+	UART_COM_SET_CUR_ALL_0 = 0x10,
 	UART_COM_SET_CUR_CH_1 = 0x11,
 	UART_COM_SET_CUR_CH_2 = 0x12,
 	UART_COM_SET_CUR_CH_3 = 0x13,
@@ -192,6 +192,10 @@ void OverTempProt(void){
 	//
 	//TODO
 	//
+}
+
+void inline ToggleUserLED(void){
+
 }
 
 void SendShiftReg(uint16_t *shift_reg_data){
@@ -317,38 +321,6 @@ switch(state){
 
 			  case UART_COM_WRITE_EEPROM_P2:
 				  HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_2, received_command[1], 1, &received_command[2], 1, COMM_TIMEOUT);
-				  break;
-
-			  case	UART_COM_SET_CUR_CH_1:
-				  //TODO, TEST
-				  break;
-
-			  case	UART_COM_SET_CUR_CH_2:
-				  //TODO
-				  break;
-
-			  case	UART_COM_SET_CUR_CH_3:
-				  //TODO
-				  break;
-
-			  case	UART_COM_SET_CUR_CH_4:
-				  //TODO
-				  break;
-
-			  case	UART_COM_SET_CUR_CH_5:
-				  //TODO
-				  break;
-
-			  case	UART_COM_SET_CUR_CH_6:
-				  //TODO
-				  break;
-
-			  case	UART_COM_SET_CUR_CH_7:
-				  //TODO
-				  break;
-
-			  case	UART_COM_SET_CUR_CH_8:
-				  //TODO
 				  break;
 
 			  case UART_COM_START_LOAD:

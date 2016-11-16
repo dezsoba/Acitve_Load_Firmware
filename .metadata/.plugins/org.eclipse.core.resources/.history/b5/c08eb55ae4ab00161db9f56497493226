@@ -321,10 +321,17 @@ switch(state){
 
 			  case	UART_COM_SET_CUR_CH_1:
 				  //TODO, TEST
+				  for(i=0;i<10;i++){
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+				  }
+
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_2:
-				  //TODO
+
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_3:

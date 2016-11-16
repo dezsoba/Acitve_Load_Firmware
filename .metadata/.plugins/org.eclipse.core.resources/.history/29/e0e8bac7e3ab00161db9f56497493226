@@ -194,6 +194,10 @@ void OverTempProt(void){
 	//
 }
 
+void inline ToggleUserLED(void){
+
+}
+
 void SendShiftReg(uint16_t *shift_reg_data){
 	HAL_SPI_Transmit(&hspi2, shift_reg_data, 2, COMM_TIMEOUT);
 	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_PIN);
@@ -320,7 +324,7 @@ switch(state){
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_1:
-				  //TODO, TEST
+				  //TODO
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_2:

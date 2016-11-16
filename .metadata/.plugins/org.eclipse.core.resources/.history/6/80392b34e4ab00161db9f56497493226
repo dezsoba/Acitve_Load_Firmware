@@ -321,34 +321,83 @@ switch(state){
 
 			  case	UART_COM_SET_CUR_CH_1:
 				  //TODO, TEST
+				  for(i=0;i<10;i++){
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+				  }
+
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_2:
-				  //TODO
+				  //TODO, TEST
+				  for(i=0;i<10;i++){
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+				  }
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_3:
-				  //TODO
+				  //TODO, TEST
+				  for(i=0;i<10;i++){
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+				  }
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_4:
-				  //TODO
+				  //TODO, TEST
+				  for(i=0;i<10;i++){
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+				  }
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_5:
-				  //TODO
+				  //TODO, TEST
+				  for(i=0;i<10;i++){
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+				  }
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_6:
-				  //TODO
+				  //TODO, TEST
+				  for(i=0;i<10;i++){
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+				  }
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_7:
-				  //TODO
+				  //TODO, TEST
+				  for(i=0;i<10;i++){
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+				  }
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_8:
-				  //TODO
+				  //TODO, TEST
+				  for(i=0;i<10;i++){
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+					  HAL_Delay(100);
+				  }
 				  break;
 
 			  case UART_COM_START_LOAD:
