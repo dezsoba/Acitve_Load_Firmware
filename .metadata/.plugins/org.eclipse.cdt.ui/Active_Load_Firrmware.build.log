@@ -1,6 +1,23 @@
-13:53:43 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+17:38:51 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
 make all 
-make: Nothing to be done for `all'.
+'Building file: ../Src/usart.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/usart.d" -MT"Src/usart.o" -o "Src/usart.o" "../Src/usart.c"
+'Finished building: ../Src/usart.c'
+' '
+'Building target: Active_Load_Firrmware.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F411RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "Active_Load_Firrmware.elf" @"objects.list"  
+'Finished building target: Active_Load_Firrmware.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "Active_Load_Firrmware.elf" "Active_Load_Firrmware.bin"
+arm-none-eabi-size "Active_Load_Firrmware.elf"
+   text	   data	    bss	    dec	    hex	filename
+  15436	     12	   2500	  17948	   461c	Active_Load_Firrmware.elf
+' '
 
-13:53:44 Build Finished (took 436ms)
+17:39:00 Build Finished (took 8s.871ms)
 
