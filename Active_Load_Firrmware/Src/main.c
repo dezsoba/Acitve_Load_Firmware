@@ -184,7 +184,7 @@ void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c){
 }
 
 void inline SetFanSpeed(uint8_t heatsink_temp){
-	uint8_t fan_speed = (uint8_t)((heatsink_temp-20)*(0.598)); // 20...127 -> 0...64
+	uint8_t fan_speed = 64-(uint8_t)((heatsink_temp-20)*(0.598)); // 20...127 -> 0...64
 	__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, fan_speed);
 }
 
@@ -211,6 +211,9 @@ int main(void)
 		uint8_t voltage_ranges = 0xFF;
 		uint8_t active_channels = 0;
 		uint8_t i = 0;
+
+		uint16_t rpm_fan1 = 0;
+		uint16_t rpm_fan2 = 0;
 
 		uint8_t eeprom_buffer[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	//	uint16_t eeprom_values_dev[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF};
@@ -252,7 +255,11 @@ int main(void)
 
 
         /* SEND SYSTEM INFO ENDS */
-        HAL_TIM_PWM_Start(&htim11, TIM_CHANNEL_1);
+      HAL_TIM_PWM_Start(&htim11, TIM_CHANNEL_1);
+
+      HAL_TIM_Base_Start(&htim1);
+      HAL_TIM_Base_Start(&htim5);
+
   	  HAL_UART_Receive_DMA(&huart1, &received_command, 3);
 
   	  /*LOAD CALIBRATION DATA BEGINS*/
@@ -413,6 +420,12 @@ switch(state){
 		  }
 
 		  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+
+		  rpm_fan1 = __HAL_TIM_GetCounter(&htim1)/2*60;
+		  rpm_fan2 = __HAL_TIM_GetCounter(&htim5)/2*60;
+
+		  __HAL_TIM_SET_COUNTER(&htim1,0);
+		  __HAL_TIM_SET_COUNTER(&htim5,0);
 		  //1S TASKS END
 		  _1s_flag = 0;
 	  }
