@@ -123,6 +123,8 @@ enum UartCommProtocol{
 
 #define TEMP_LIMIT 120
 
+#define FAN_CONTROL_CONST 0.01
+
 /* GPIO DEFINES */
 
 #define U_LED_PORT GPIOC
@@ -183,17 +185,68 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c){
 }
 
-void inline SetFanSpeed(uint8_t heatsink_temp){
-	uint8_t fan_speed = 64-(uint8_t)((heatsink_temp-20)*(0.598)); // 20...127 -> 0...64
-	__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, fan_speed);
+void inline SetFanSpeed(uint8_t heatsink_temp, uint16_t rpm_fan1){
+
+	int16_t delta_duty;
+	uint16_t target_rpm;
+
+	int16_t current_duty = __HAL_TIM_GET_COMPARE(&htim11, TIM_CHANNEL_1);
+	target_rpm = heatsink_temp*19+2100;		//SETTING TARGET RPM  20...127 °C -> 2500->4500 1/min
+	delta_duty = (int16_t)(rpm_fan1 - target_rpm)*FAN_CONTROL_CONST;
+	current_duty += delta_duty;
+	if((current_duty) < 0)
+	{
+		current_duty = 0;
+	}else{
+		if((current_duty) > 64){
+			current_duty = 64;
+		}
+	}
+	__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, current_duty);
 }
 
-void OverTempProt(void){
-	//
-	//TODO
-	//
+void OverTempProt(uint8_t *heatsink_temp, sys_state *state){
+
+	uint8_t error_number;
+	uint8_t errorlog[4];
+
+	*state = LOST;
+	HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_4, 0, 1, &error_number, 1, COMM_TIMEOUT);
+	if(error_number < 254){
+		errorlog[0]='T';
+		errorlog[1]='M';
+		errorlog[2]='P';
+		errorlog[3]=*heatsink_temp;
+
+		HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, error_number + 1, 1, &errorlog, 4, COMM_TIMEOUT);
+		error_number += 1;
+		HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, 0, 1, &error_number, 1, COMM_TIMEOUT);
+	}
 }
 
+void FanStuckProt(uint16_t *rpm_fan1, uint16_t *rpm_fan2, sys_state *state){
+	uint8_t error_number;
+	uint8_t errorlog[4];
+
+	*state = LOST;
+	HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_4, 0, 1, &error_number, 1, COMM_TIMEOUT);
+	if(error_number < 254){
+		errorlog[0]='F';
+		errorlog[1]='N';
+		if(rpm_fan1 <= 100){
+			errorlog[2]='1';
+			errorlog[3]=*rpm_fan1;
+		}else{
+			errorlog[2]="2";
+			errorlog[3]=*rpm_fan2;
+		}
+
+		HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, error_number + 1, 1, &errorlog, 4, COMM_TIMEOUT);
+		error_number += 1;
+		HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, 0, 1, &error_number, 1, COMM_TIMEOUT);
+	}
+
+}
 void SendShiftReg(uint16_t *shift_reg_data){
 	HAL_SPI_Transmit(&hspi2, shift_reg_data, 2, COMM_TIMEOUT);
 	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_PIN);
@@ -207,13 +260,14 @@ int main(void)
   /* USER CODE BEGIN 1 */
 		sys_state state = SETUP;
 		uint8_t heatsink_temp = 0;
+		uint16_t rpm_fan1 = 0;
+		uint16_t rpm_fan2 = 0;
+
 		uint16_t shift_reg_data = 0;
 		uint8_t voltage_ranges = 0xFF;
 		uint8_t active_channels = 0;
 		uint8_t i = 0;
 
-		uint16_t rpm_fan1 = 0;
-		uint16_t rpm_fan2 = 0;
 
 		uint8_t eeprom_buffer[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	//	uint16_t eeprom_values_dev[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF};
@@ -378,6 +432,14 @@ switch(state){
 		  if(data_rdy){
 			  switch(received_command[0]){
 
+			  case UART_COM_TMPREAD:
+				  HAL_UART_Transmit(&huart1, &heatsink_temp, 1, COMM_TIMEOUT);
+				  break;
+
+			  case UART_COM_SYS_RESET:
+				  HAL_NVIC_SystemReset();
+				  break;
+
 			  case UART_COM_STOP_LOAD:
 				  //TODO
 
@@ -414,18 +476,26 @@ switch(state){
 	  if(_1s_flag == 1){
 		  //1S TASKS BEGIN
 		  HAL_I2C_Mem_Read_DMA(&hi2c1, TC74A0_ADDRESS, TC74_TEMP_LOC, 1, &heatsink_temp, 1);
-		  SetFanSpeed(heatsink_temp);
-		  if(heatsink_temp > TEMP_LIMIT){
-			  OverTempProt();
-		  }
-
-		  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
-
 		  rpm_fan1 = __HAL_TIM_GetCounter(&htim1)/2*60;
 		  rpm_fan2 = __HAL_TIM_GetCounter(&htim5)/2*60;
 
 		  __HAL_TIM_SET_COUNTER(&htim1,0);
 		  __HAL_TIM_SET_COUNTER(&htim5,0);
+
+		  SetFanSpeed(heatsink_temp, rpm_fan1);
+		  //TODO
+		  //is fan stuck?
+		  //TODO
+		  if(heatsink_temp > TEMP_LIMIT){
+			  OverTempProt(&heatsink_temp, &state);
+		  }
+		  if(rpm_fan1 <= 100 || rpm_fan2 <= 100){
+			  FanStuckProt(&rpm_fan1, &rpm_fan2, &state);
+		  }
+
+		  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+
+
 		  //1S TASKS END
 		  _1s_flag = 0;
 	  }
@@ -454,12 +524,11 @@ void SystemClock_Config(void)
 
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = 16;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 8;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLM = 10;
   RCC_OscInitStruct.PLL.PLLN = 84;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 4;
