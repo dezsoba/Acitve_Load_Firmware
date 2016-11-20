@@ -180,12 +180,10 @@ void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c){
 }
 
 void inline SetFanSpeed(uint8_t heatsink_temp, uint16_t rpm_fan1){
-
 	int16_t delta_duty;
 	uint16_t target_rpm;
-
 	int16_t current_duty = __HAL_TIM_GET_COMPARE(&htim11, TIM_CHANNEL_1);
-	target_rpm = heatsink_temp*19+2100;		//SETTING TARGET RPM  20...127 °C -> 2500->4500 1/min
+	target_rpm = heatsink_temp*19+2100;										//SETTING TARGET RPM  20...127 °C -> 2500->4500 1/min
 	delta_duty = (int16_t)(rpm_fan1 - target_rpm)*FAN_CONTROL_CONST;
 	current_duty += delta_duty;
 	if((current_duty) < 0)
