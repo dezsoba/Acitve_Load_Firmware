@@ -166,15 +166,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 void HAL_SYSTICK_Callback(){
 	cycle_count+=1;
-	if(!(cycle_count%10)){
-		_10m_flag = 1;
-		if(!(cycle_count%100)){
-			_100m_flag = 1;
-			if(!(cycle_count%1000)){
-				_1s_flag = 1;
-				cycle_count = 0;
-			}
-		}
+	if(!(cycle_count%1000)){
+		_1s_flag = 1;
+		cycle_count = 0;
 	}
 }
 
@@ -452,6 +446,7 @@ switch(state){
 			  case UART_COM_READ_VOLT_ACTIVE_CHANNELS:
 				  for(i = 0; i < 8; i++){
 					  if(active_channels & (1 << i)){
+						  //TRANSMIT DUMMY DATA // DBG
 						  HAL_UART_Transmit(&huart1, &cycle_count, 1, COMM_TIMEOUT);
 					  }
 
@@ -478,14 +473,10 @@ switch(state){
 		  HAL_I2C_Mem_Read_DMA(&hi2c1, TC74A0_ADDRESS, TC74_TEMP_LOC, 1, &heatsink_temp, 1);
 		  rpm_fan1 = __HAL_TIM_GetCounter(&htim1)/2*60;
 		  rpm_fan2 = __HAL_TIM_GetCounter(&htim5)/2*60;
-
 		  __HAL_TIM_SET_COUNTER(&htim1,0);
 		  __HAL_TIM_SET_COUNTER(&htim5,0);
-
 		  SetFanSpeed(heatsink_temp, rpm_fan1);
-		  //TODO
-		  //is fan stuck?
-		  //TODO
+
 		  if(heatsink_temp > TEMP_LIMIT){
 			  OverTempProt(&heatsink_temp, &state);
 		  }
@@ -494,19 +485,9 @@ switch(state){
 		  }
 
 		  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
-
-
 		  //1S TASKS END
 		  _1s_flag = 0;
 	  }
-
-	  if(_100m_flag ==1){
-		  //100MS TASKS BEGIN
-
-		  //100MS TASKS END
-		  _100m_flag = 0;
-	  }
-
   }
   /* USER CODE END 3 */
 
