@@ -64,6 +64,7 @@ typedef enum sys_state{
 /* UART COMMANDS BEGIN */
 
 enum UartCommProtocol{
+	UART_COM_SYS_READ = 0x01,
 	UART_COM_SYS_RESET = 0x02,
 	UART_COM_TMPREAD = 0x03,
 	UART_COM_SET_ACTIVE_CHANNELS = 0x04,
