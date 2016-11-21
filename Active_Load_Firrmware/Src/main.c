@@ -64,6 +64,7 @@ typedef enum sys_state{
 /* UART COMMANDS BEGIN */
 
 enum UartCommProtocol{
+	UART_COM_SYS_HANDSHAKE = 0x01,
 	UART_COM_SYS_RESET = 0x02,
 	UART_COM_TMPREAD = 0x03,
 	UART_COM_SET_ACTIVE_CHANNELS = 0x04,
@@ -292,7 +293,7 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
   SendShiftReg(&shift_reg_data);
-  while(received_command[0] != UART_COM_SYS_READ){
+  while(received_command[0] != UART_COM_SYS_HANDSHAKE){
       	  HAL_UART_Receive(&huart1, &received_command, 1, COMM_TIMEOUT);
         }
         /* SEND SYSTEM INFO BEGINS */
