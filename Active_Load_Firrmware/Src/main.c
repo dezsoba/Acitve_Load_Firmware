@@ -125,17 +125,6 @@ enum UartCommProtocol{
 
 #define FAN_CONTROL_CONST 0.01
 
-/* GPIO DEFINES */
-
-#define U_LED_PORT GPIOC
-#define U_LED_PIN GPIO_PIN_12
-
-#define STORE_PORT PORTA
-#define STORE_PIN GPIO_PIN_4
-
-
-
-
 
 enum EEPROM_P_ADDRESS{
 	EEPROM_PAGE_1 = 0xA0, // SYSTEM INFO
@@ -161,8 +150,10 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN 0 */
 
+/*
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 }
+*/
 
 void HAL_SYSTICK_Callback(){
 	cycle_count+=1;
@@ -225,11 +216,11 @@ void FanStuckProt(uint16_t *rpm_fan1, uint16_t *rpm_fan2, sys_state *state){
 	if(error_number < 254){
 		errorlog[0]='F';
 		errorlog[1]='N';
-		if(rpm_fan1 <= 100){
+		if(*rpm_fan1 <= 100){
 			errorlog[2]='1';
 			errorlog[3]=*rpm_fan1;
 		}else{
-			errorlog[2]="2";
+			errorlog[2]='2';
 			errorlog[3]=*rpm_fan2;
 		}
 
@@ -239,11 +230,39 @@ void FanStuckProt(uint16_t *rpm_fan1, uint16_t *rpm_fan2, sys_state *state){
 	}
 
 }
+
 void SendShiftReg(uint16_t *shift_reg_data){
 	HAL_SPI_Transmit(&hspi2, shift_reg_data, 2, COMM_TIMEOUT);
-	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_PIN);
-	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_PIN);
+	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_Pin);
+	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_Pin);
 }
+
+void SetDAC(uint8_t dac_ch_number, uint8_t current_code_1, uint8_t current_code_2, uint16_t nSync){
+	uint16_t current_code;
+	uint8_t dac_msg[3] = { 0 }; 					//24 bits
+	current_code = ((current_code_1 << 8) & current_code_2);
+	dac_msg[0] = dac_ch_number & 0x01;
+	dac_msg[1] = ((current_code & 0x0FF0) >> 4);		//extract higher 8 bit
+	dac_msg[2] = ((current_code & 0x000F) << 4);		//extract lower 4 bit
+
+	HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSync, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi2, dac_msg, 3, COMM_TIMEOUT);
+	HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSync, GPIO_PIN_SET);
+}
+
+void UpdateDAC(){
+	HAL_GPIO_WritePin(nLDAC_GPIO_Port, nLDAC_Pin, GPIO_PIN_RESET);
+	//10ns minimum
+	HAL_GPIO_WritePin(nLDAC_GPIO_Port, nLDAC_Pin, GPIO_PIN_SET);
+}
+
+void ClearDAC(){
+	HAL_GPIO_WritePin(nCLR_GPIO_Port, nCLR_Pin, GPIO_PIN_RESET);
+	//5ns minimum
+	HAL_GPIO_WritePin(nCLR_GPIO_Port, nCLR_Pin, GPIO_PIN_SET);
+}
+
+
 /* USER CODE END 0 */
 
 int main(void)
@@ -321,6 +340,12 @@ int main(void)
   	  HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_2, 16, 1, calib_channel_code_2A, 16, COMM_TIMEOUT);
 //  	  HAL_UART_Transmit(&huart2, calib_channel_code_0A, 16, COMM_TIMEOUT);
 // 	  HAL_UART_Transmit(&huart2, calib_channel_code_2A, 16, COMM_TIMEOUT);
+  	  HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSYNC_1_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nSYNC_2_GPIO_Port, nSYNC_2_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nSYNC_3_GPIO_Port, nSYNC_3_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nSYNC_4_GPIO_Port, nSYNC_4_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nLDAC_GPIO_Port, nLDAC_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nCLR_GPIO_Port, nCLR_Pin, GPIO_PIN_SET);
   	  HAL_Delay(100);
 
   	  /*READ CALIBRATION DATA ENDS*/
@@ -373,44 +398,42 @@ switch(state){
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_1:
-				  //TODO, TEST
+				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_1_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_2:
-				  //TODO
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_1_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_3:
-				  //TODO
+				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_2_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_4:
-				  //TODO
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_2_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_5:
-				  //TODO
+				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_3_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_6:
-				  //TODO
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_3_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_7:
-				  //TODO
+				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_4_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_8:
-				  //TODO
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_4_Pin);
 				  break;
 
 			  case UART_COM_START_LOAD:
 				  state = RUN;
-				  //TODO
 
-				  //START LOAD
+				  UpdateDAC();
 
-				  //TODO
 				  break;
 
 			  default:
@@ -433,11 +456,9 @@ switch(state){
 				  break;
 
 			  case UART_COM_STOP_LOAD:
-				  //TODO
 
-				  //STOP LOAD
+				  ClearDAC();
 
-				  //TODO
 				  state = SETUP;
 				  break;
 
@@ -482,7 +503,7 @@ switch(state){
 			  FanStuckProt(&rpm_fan1, &rpm_fan2, &state);
 		  }
 
-		  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+		  HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
 		  //1S TASKS END
 		  _1s_flag = 0;
 	  }
