@@ -64,7 +64,7 @@ typedef enum sys_state{
 /* UART COMMANDS BEGIN */
 
 enum UartCommProtocol{
-	UART_COM_SYS_READ = 0x01,
+	UART_COM_SYS_HANDSHAKE = 0x01,
 	UART_COM_SYS_RESET = 0x02,
 	UART_COM_TMPREAD = 0x03,
 	UART_COM_SET_ACTIVE_CHANNELS = 0x04,
@@ -123,16 +123,7 @@ enum UartCommProtocol{
 
 #define TEMP_LIMIT 120
 
-/* GPIO DEFINES */
-
-#define U_LED_PORT GPIOC
-#define U_LED_PIN GPIO_PIN_12
-
-#define STORE_PORT PORTA
-#define STORE_PIN GPIO_PIN_4
-
-
-
+#define FAN_CONTROL_CONST 0.01
 
 
 enum EEPROM_P_ADDRESS{
@@ -159,20 +150,16 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN 0 */
 
+/*
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 }
+*/
 
 void HAL_SYSTICK_Callback(){
 	cycle_count+=1;
-	if(!(cycle_count%10)){
-		_10m_flag = 1;
-		if(!(cycle_count%100)){
-			_100m_flag = 1;
-			if(!(cycle_count%1000)){
-				_1s_flag = 1;
-				cycle_count = 0;
-			}
-		}
+	if(!(cycle_count%1000)){
+		_1s_flag = 1;
+		cycle_count = 0;
 	}
 }
 
@@ -183,22 +170,99 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c){
 }
 
-void inline SetFanSpeed(uint8_t heatsink_temp){
-	uint8_t fan_speed = (uint8_t)((heatsink_temp-20)*(0.598)); // 20...127 -> 0...64
-	__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, fan_speed);
+void inline SetFanSpeed(uint8_t heatsink_temp, uint16_t rpm_fan1){
+	int16_t delta_duty;
+	uint16_t target_rpm;
+	int16_t current_duty = __HAL_TIM_GET_COMPARE(&htim11, TIM_CHANNEL_1);
+	target_rpm = heatsink_temp*19+2100;										//SETTING TARGET RPM  20...127 °C -> 2500->4500 1/min
+	delta_duty = (int16_t)(rpm_fan1 - target_rpm)*FAN_CONTROL_CONST;
+	current_duty += delta_duty;
+	if((current_duty) < 0)
+	{
+		current_duty = 0;
+	}else{
+		if((current_duty) > 64){
+			current_duty = 64;
+		}
+	}
+	__HAL_TIM_SET_COMPARE(&htim11, TIM_CHANNEL_1, current_duty);
 }
 
-void OverTempProt(void){
-	//
-	//TODO
-	//
+void OverTempProt(uint8_t *heatsink_temp, sys_state *state){
+
+	uint8_t error_number;
+	uint8_t errorlog[4];
+
+	*state = LOST;
+	HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_4, 0, 1, &error_number, 1, COMM_TIMEOUT);
+	if(error_number < 254){
+		errorlog[0]='T';
+		errorlog[1]='M';
+		errorlog[2]='P';
+		errorlog[3]=*heatsink_temp;
+
+		HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, error_number + 1, 1, &errorlog, 4, COMM_TIMEOUT);
+		error_number += 1;
+		HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, 0, 1, &error_number, 1, COMM_TIMEOUT);
+	}
+}
+
+void FanStuckProt(uint16_t *rpm_fan1, uint16_t *rpm_fan2, sys_state *state){
+	uint8_t error_number;
+	uint8_t errorlog[4];
+
+	*state = LOST;
+	HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_4, 0, 1, &error_number, 1, COMM_TIMEOUT);
+	if(error_number < 254){
+		errorlog[0]='F';
+		errorlog[1]='N';
+		if(*rpm_fan1 <= 100){
+			errorlog[2]='1';
+			errorlog[3]=*rpm_fan1;
+		}else{
+			errorlog[2]='2';
+			errorlog[3]=*rpm_fan2;
+		}
+
+		HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, error_number + 1, 1, &errorlog, 4, COMM_TIMEOUT);
+		error_number += 1;
+		HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, 0, 1, &error_number, 1, COMM_TIMEOUT);
+	}
+
 }
 
 void SendShiftReg(uint16_t *shift_reg_data){
 	HAL_SPI_Transmit(&hspi2, shift_reg_data, 2, COMM_TIMEOUT);
-	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_PIN);
-	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_PIN);
+	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_Pin);
+	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_Pin);
 }
+
+void SetDAC(uint8_t dac_ch_number, uint8_t current_code_1, uint8_t current_code_2, uint16_t nSync){
+	uint16_t current_code;
+	uint8_t dac_msg[3] = { 0 }; 					//24 bits
+	current_code = ((current_code_1 << 8) | current_code_2);
+	dac_msg[0] = dac_ch_number & 0x01;
+	dac_msg[1] = ((current_code & 0x0FF0) >> 4);		//extract higher 8 bit
+	dac_msg[2] = ((current_code & 0x000F) << 4);		//extract lower 4 bit
+
+	HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSync, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi2, dac_msg, 3, COMM_TIMEOUT);
+	HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSync, GPIO_PIN_SET);
+}
+
+void UpdateDAC(){
+	HAL_GPIO_WritePin(nLDAC_GPIO_Port, nLDAC_Pin, GPIO_PIN_RESET);
+	//10ns minimum
+	HAL_GPIO_WritePin(nLDAC_GPIO_Port, nLDAC_Pin, GPIO_PIN_SET);
+}
+
+void ClearDAC(){
+	HAL_GPIO_WritePin(nCLR_GPIO_Port, nCLR_Pin, GPIO_PIN_RESET);
+	//5ns minimum
+	HAL_GPIO_WritePin(nCLR_GPIO_Port, nCLR_Pin, GPIO_PIN_SET);
+}
+
+
 /* USER CODE END 0 */
 
 int main(void)
@@ -207,10 +271,13 @@ int main(void)
   /* USER CODE BEGIN 1 */
 		sys_state state = SETUP;
 		uint8_t heatsink_temp = 0;
+		uint16_t rpm_fan1 = 0;
+		uint16_t rpm_fan2 = 0;
+
 		uint16_t shift_reg_data = 0;
-		uint8_t voltage_ranges = 0xFF;
 		uint8_t active_channels = 0;
 		uint8_t i = 0;
+
 
 		uint8_t eeprom_buffer[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	//	uint16_t eeprom_values_dev[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF};
@@ -244,15 +311,24 @@ int main(void)
 
   /* USER CODE BEGIN 2 */
   SendShiftReg(&shift_reg_data);
-  while(received_command[0] != UART_COM_SYS_READ){
+
+/* DISABLED WHILE IN DEBUG
+
+  while(received_command[0] != UART_COM_SYS_HANDSHAKE){
       	  HAL_UART_Receive(&huart1, &received_command, 1, COMM_TIMEOUT);
         }
+
+*/
         /* SEND SYSTEM INFO BEGINS */
         HAL_UART_Transmit(&huart1, &received_command, 1, COMM_TIMEOUT);
 
 
         /* SEND SYSTEM INFO ENDS */
-        HAL_TIM_PWM_Start(&htim11, TIM_CHANNEL_1);
+      HAL_TIM_PWM_Start(&htim11, TIM_CHANNEL_1);
+
+      HAL_TIM_Base_Start(&htim1);
+      HAL_TIM_Base_Start(&htim5);
+
   	  HAL_UART_Receive_DMA(&huart1, &received_command, 3);
 
   	  /*LOAD CALIBRATION DATA BEGINS*/
@@ -268,6 +344,12 @@ int main(void)
   	  HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_2, 16, 1, calib_channel_code_2A, 16, COMM_TIMEOUT);
 //  	  HAL_UART_Transmit(&huart2, calib_channel_code_0A, 16, COMM_TIMEOUT);
 // 	  HAL_UART_Transmit(&huart2, calib_channel_code_2A, 16, COMM_TIMEOUT);
+  	  HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSYNC_1_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nSYNC_2_GPIO_Port, nSYNC_2_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nSYNC_3_GPIO_Port, nSYNC_3_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nSYNC_4_GPIO_Port, nSYNC_4_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nLDAC_GPIO_Port, nLDAC_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nCLR_GPIO_Port, nCLR_Pin, GPIO_PIN_SET);
   	  HAL_Delay(100);
 
   	  /*READ CALIBRATION DATA ENDS*/
@@ -320,51 +402,42 @@ switch(state){
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_1:
-				  //TODO, TEST
-				  for(i=0;i<10;i++){
-					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
-					  HAL_Delay(100);
-					  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
-					  HAL_Delay(100);
-				  }
-
+				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_1_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_2:
-
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_1_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_3:
-				  //TODO
+				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_2_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_4:
-				  //TODO
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_2_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_5:
-				  //TODO
+				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_3_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_6:
-				  //TODO
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_3_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_7:
-				  //TODO
+				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_4_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_8:
-				  //TODO
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_4_Pin);
 				  break;
 
 			  case UART_COM_START_LOAD:
 				  state = RUN;
-				  //TODO
 
-				  //START LOAD
+				  UpdateDAC();
 
-				  //TODO
 				  break;
 
 			  default:
@@ -378,18 +451,25 @@ switch(state){
 		  if(data_rdy){
 			  switch(received_command[0]){
 
+			  case UART_COM_TMPREAD:
+				  HAL_UART_Transmit(&huart1, &heatsink_temp, 1, COMM_TIMEOUT);
+				  break;
+
+			  case UART_COM_SYS_RESET:
+				  HAL_NVIC_SystemReset();
+				  break;
+
 			  case UART_COM_STOP_LOAD:
-				  //TODO
 
-				  //STOP LOAD
+				  ClearDAC();
 
-				  //TODO
 				  state = SETUP;
 				  break;
 
 			  case UART_COM_READ_VOLT_ACTIVE_CHANNELS:
 				  for(i = 0; i < 8; i++){
 					  if(active_channels & (1 << i)){
+						  //TRANSMIT DUMMY DATA // DBG
 						  HAL_UART_Transmit(&huart1, &cycle_count, 1, COMM_TIMEOUT);
 					  }
 
@@ -414,23 +494,39 @@ switch(state){
 	  if(_1s_flag == 1){
 		  //1S TASKS BEGIN
 		  HAL_I2C_Mem_Read_DMA(&hi2c1, TC74A0_ADDRESS, TC74_TEMP_LOC, 1, &heatsink_temp, 1);
-		  SetFanSpeed(heatsink_temp);
+		  rpm_fan1 = __HAL_TIM_GetCounter(&htim1)/2*60;
+		  rpm_fan2 = __HAL_TIM_GetCounter(&htim5)/2*60;
+		  __HAL_TIM_SET_COUNTER(&htim1,0);
+		  __HAL_TIM_SET_COUNTER(&htim5,0);
+		  SetFanSpeed(heatsink_temp, rpm_fan1);
+
 		  if(heatsink_temp > TEMP_LIMIT){
-			  OverTempProt();
+			  OverTempProt(&heatsink_temp, &state);
+		  }
+		  if(rpm_fan1 <= 100 || rpm_fan2 <= 100){
+			  FanStuckProt(&rpm_fan1, &rpm_fan2, &state);
 		  }
 
-		  HAL_GPIO_TogglePin(U_LED_PORT, U_LED_PIN);
+		  HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
+
+
+		  //// DEBUG
+
+		  SetDAC(0, 0x0F, 0xFF, nSYNC_1_Pin);
+		  SetDAC(1, 0x0F, 0xFF, nSYNC_1_Pin);
+		  SetDAC(0, 0x0F, 0xFF, nSYNC_2_Pin);
+		  SetDAC(1, 0x0F, 0xFF, nSYNC_2_Pin);
+		  SetDAC(0, 0x0F, 0xFF, nSYNC_3_Pin);
+		  SetDAC(1, 0x0F, 0xFF, nSYNC_3_Pin);
+		  SetDAC(0, 0x0F, 0xFF, nSYNC_4_Pin);
+		  SetDAC(1, 0x0F, 0xFF, nSYNC_4_Pin);
+		  UpdateDAC();
+
+		  //// DEBUG ENDS
+
 		  //1S TASKS END
 		  _1s_flag = 0;
 	  }
-
-	  if(_100m_flag ==1){
-		  //100MS TASKS BEGIN
-
-		  //100MS TASKS END
-		  _100m_flag = 0;
-	  }
-
   }
   /* USER CODE END 3 */
 
@@ -448,12 +544,11 @@ void SystemClock_Config(void)
 
   __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
-  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
-  RCC_OscInitStruct.HSICalibrationValue = 16;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = 8;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLM = 10;
   RCC_OscInitStruct.PLL.PLLN = 84;
   RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
   RCC_OscInitStruct.PLL.PLLQ = 4;

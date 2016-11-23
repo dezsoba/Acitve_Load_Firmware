@@ -170,44 +170,6 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart){
 void HAL_I2C_MasterRxCpltCallback(I2C_HandleTypeDef *hi2c){
 }
 
-void ChangeSPI2_CLK_edge_NEG(){
-	hspi2.Instance = SPI2;
-	hspi2.Init.Mode = SPI_MODE_MASTER;
-	hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-	hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
-	hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
-	hspi2.Init.CLKPhase = SPI_PHASE_2EDGE;
-	hspi2.Init.NSS = SPI_NSS_SOFT;
-	hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
-	hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
-	hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
-	hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-	hspi2.Init.CRCPolynomial = 10;
-	if (HAL_SPI_Init(&hspi2) != HAL_OK)
-	{
-	  Error_Handler();
-	}
-}
-
-void ChangeSPI2_CLK_edge_POS(){
-	hspi2.Instance = SPI2;
-	hspi2.Init.Mode = SPI_MODE_MASTER;
-	hspi2.Init.Direction = SPI_DIRECTION_2LINES;
-	hspi2.Init.DataSize = SPI_DATASIZE_8BIT;
-	hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
-	hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
-	hspi2.Init.NSS = SPI_NSS_SOFT;
-	hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
-	hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
-	hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
-	hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
-	hspi2.Init.CRCPolynomial = 10;
-	if (HAL_SPI_Init(&hspi2) != HAL_OK)
-	{
-	  Error_Handler();
-	}
-}
-
 void inline SetFanSpeed(uint8_t heatsink_temp, uint16_t rpm_fan1){
 	int16_t delta_duty;
 	uint16_t target_rpm;
@@ -270,11 +232,9 @@ void FanStuckProt(uint16_t *rpm_fan1, uint16_t *rpm_fan2, sys_state *state){
 }
 
 void SendShiftReg(uint16_t *shift_reg_data){
-	ChangeSPI2_CLK_edge_POS();
 	HAL_SPI_Transmit(&hspi2, shift_reg_data, 2, COMM_TIMEOUT);
 	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_Pin);
 	HAL_GPIO_TogglePin(STORE_GPIO_Port, STORE_Pin);
-	ChangeSPI2_CLK_edge_NEG();
 }
 
 void SetDAC(uint8_t dac_ch_number, uint8_t current_code_1, uint8_t current_code_2, uint16_t nSync){
@@ -301,7 +261,6 @@ void ClearDAC(){
 	//5ns minimum
 	HAL_GPIO_WritePin(nCLR_GPIO_Port, nCLR_Pin, GPIO_PIN_SET);
 }
-
 
 
 /* USER CODE END 0 */
