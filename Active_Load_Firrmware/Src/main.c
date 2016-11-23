@@ -527,6 +527,9 @@ switch(state){
 
 	  case LOST:
 		  //going to safe state, signaling error
+		  ClearDAC();
+		  HAL_NVIC_SystemReset();
+
 		  break;
 	  default:
 		  break;
@@ -541,37 +544,16 @@ switch(state){
 		  __HAL_TIM_SET_COUNTER(&htim5,0);
 		  SetFanSpeed(heatsink_temp, rpm_fan1);
 
+		  /* MEGHALT DC/DC, ADDIG NINCS ILYEN
 		  if(heatsink_temp > TEMP_LIMIT){
 			  OverTempProt(&heatsink_temp, &state);
 		  }
 		  if(rpm_fan1 <= 100 || rpm_fan2 <= 100){
 			  FanStuckProt(&rpm_fan1, &rpm_fan2, &state);
 		  }
+		  */
 
 		  HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
-
-
-		  //// DEBUG
-
-		  SetDAC(1, 0x0F, 0xFF, nSYNC_1_Pin);
-		  HAL_Delay(5);
-		  SetDAC(0, 0x0D, 0xFF, nSYNC_1_Pin);
-		  HAL_Delay(5);
-		  SetDAC(1, 0x0B, 0xFF, nSYNC_2_Pin);
-		  HAL_Delay(5);
-		  SetDAC(0, 0x09, 0xFF, nSYNC_2_Pin);
-		  HAL_Delay(5);
-		  SetDAC(1, 0x07, 0xFF, nSYNC_3_Pin);
-		  HAL_Delay(5);
-		  SetDAC(0, 0x05, 0xFF, nSYNC_3_Pin);
-		  HAL_Delay(5);
-		  SetDAC(1, 0x03, 0xFF, nSYNC_4_Pin);
-		  HAL_Delay(5);
-		  SetDAC(0, 0x00, 0x00, nSYNC_4_Pin);
-		  HAL_Delay(5);
-		  UpdateDAC();
-
-		  //// DEBUG ENDS
 
 		  //1S TASKS END
 		  _1s_flag = 0;
