@@ -277,6 +277,12 @@ void SendShiftReg(uint16_t *shift_reg_data){
 	ChangeSPI2_CLK_edge_NEG();
 }
 
+void ReadADC(uint8_t active_channels){
+
+	HAL_SPI_Transmit(&hpsi1, )
+	HAL_SPI_TransmitReceive()
+}
+
 void SetDAC(uint8_t dac_ch_number, uint8_t current_code_1, uint8_t current_code_2, uint16_t nSync){
 	uint16_t current_code;
 	uint8_t dac_msg[3] = { 0 }; 					//24 bits
