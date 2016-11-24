@@ -178,7 +178,7 @@ void ChangeSPI2_CLK_edge_NEG(){
 	hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
 	hspi2.Init.CLKPhase = SPI_PHASE_2EDGE;
 	hspi2.Init.NSS = SPI_NSS_SOFT;
-	hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
+	hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
 	hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
 	hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
 	hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -197,7 +197,7 @@ void ChangeSPI2_CLK_edge_POS(){
 	hspi2.Init.CLKPolarity = SPI_POLARITY_LOW;
 	hspi2.Init.CLKPhase = SPI_PHASE_1EDGE;
 	hspi2.Init.NSS = SPI_NSS_SOFT;
-	hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_8;
+	hspi2.Init.BaudRatePrescaler = SPI_BAUDRATEPRESCALER_128;
 	hspi2.Init.FirstBit = SPI_FIRSTBIT_MSB;
 	hspi2.Init.TIMode = SPI_TIMODE_DISABLE;
 	hspi2.Init.CRCCalculation = SPI_CRCCALCULATION_DISABLE;
@@ -443,35 +443,35 @@ switch(state){
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_1:
-				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_1_Pin);
-				  break;
-
-			  case	UART_COM_SET_CUR_CH_2:
 				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_1_Pin);
 				  break;
 
-			  case	UART_COM_SET_CUR_CH_3:
-				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_2_Pin);
+			  case	UART_COM_SET_CUR_CH_2:
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_1_Pin);
 				  break;
 
-			  case	UART_COM_SET_CUR_CH_4:
+			  case	UART_COM_SET_CUR_CH_3:
 				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_2_Pin);
 				  break;
 
-			  case	UART_COM_SET_CUR_CH_5:
-				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_3_Pin);
+			  case	UART_COM_SET_CUR_CH_4:
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_2_Pin);
 				  break;
 
-			  case	UART_COM_SET_CUR_CH_6:
+			  case	UART_COM_SET_CUR_CH_5:
 				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_3_Pin);
 				  break;
 
+			  case	UART_COM_SET_CUR_CH_6:
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_3_Pin);
+				  break;
+
 			  case	UART_COM_SET_CUR_CH_7:
-				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_4_Pin);
+				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_4_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_8:
-				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_4_Pin);
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_4_Pin);
 				  break;
 
 			  case UART_COM_START_LOAD:

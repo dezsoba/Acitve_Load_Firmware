@@ -443,35 +443,35 @@ switch(state){
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_1:
-				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_1_Pin);
-				  break;
-
-			  case	UART_COM_SET_CUR_CH_2:
 				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_1_Pin);
 				  break;
 
-			  case	UART_COM_SET_CUR_CH_3:
-				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_2_Pin);
+			  case	UART_COM_SET_CUR_CH_2:
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_1_Pin);
 				  break;
 
-			  case	UART_COM_SET_CUR_CH_4:
+			  case	UART_COM_SET_CUR_CH_3:
 				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_2_Pin);
 				  break;
 
-			  case	UART_COM_SET_CUR_CH_5:
-				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_3_Pin);
+			  case	UART_COM_SET_CUR_CH_4:
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_2_Pin);
 				  break;
 
-			  case	UART_COM_SET_CUR_CH_6:
+			  case	UART_COM_SET_CUR_CH_5:
 				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_3_Pin);
 				  break;
 
+			  case	UART_COM_SET_CUR_CH_6:
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_3_Pin);
+				  break;
+
 			  case	UART_COM_SET_CUR_CH_7:
-				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_4_Pin);
+				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_4_Pin);
 				  break;
 
 			  case	UART_COM_SET_CUR_CH_8:
-				  SetDAC(0x00, received_command[1], received_command[2], nSYNC_4_Pin);
+				  SetDAC(0x01, received_command[1], received_command[2], nSYNC_4_Pin);
 				  break;
 
 			  case UART_COM_START_LOAD:
