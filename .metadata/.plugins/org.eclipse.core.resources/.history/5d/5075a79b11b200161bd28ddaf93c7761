@@ -353,13 +353,13 @@ int main(void)
   /* USER CODE BEGIN 2 */
   SendShiftReg(&shift_reg_data);
 
-
+/* DISABLED WHILE IN DEBUG
 
   while(received_command[0] != UART_COM_SYS_HANDSHAKE){
       	  HAL_UART_Receive(&huart1, &received_command, 1, COMM_TIMEOUT);
         }
 
-
+*/
         /* SEND SYSTEM INFO BEGINS */
         HAL_UART_Transmit(&huart1, &received_command, 1, COMM_TIMEOUT);
 
