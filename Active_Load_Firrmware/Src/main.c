@@ -277,10 +277,15 @@ void SendShiftReg(uint16_t *shift_reg_data){
 	ChangeSPI2_CLK_edge_NEG();
 }
 
-void ReadADC(uint8_t active_channels){
-
-	HAL_SPI_Transmit(&hpsi1, )
-	HAL_SPI_TransmitReceive()
+void ConfADC(uint8_t active_channels){
+	uint16_t control_register = 0b1000000000000100 | (active_channels << 6);  // single read, external ref, no temp sensor
+	HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);
+	HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_SET);
+	control_register = 0x0000;
+	HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);		//first conversion
+	HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_SET);
 }
 
 void SetDAC(uint8_t dac_ch_number, uint8_t current_code_1, uint8_t current_code_2, uint16_t nSync){
@@ -324,6 +329,8 @@ int main(void)
 		uint16_t shift_reg_data = 0;
 		uint8_t active_channels = 0;
 		uint8_t i = 0;
+
+		uint16_t adc_result = 0;
 
 
 		uint8_t eeprom_buffer[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -397,6 +404,7 @@ int main(void)
   	  HAL_GPIO_WritePin(nSYNC_4_GPIO_Port, nSYNC_4_Pin, GPIO_PIN_SET);
   	  HAL_GPIO_WritePin(nLDAC_GPIO_Port, nLDAC_Pin, GPIO_PIN_SET);
   	  HAL_GPIO_WritePin(nCLR_GPIO_Port, nCLR_Pin, GPIO_PIN_SET);
+  	  HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_SET);
   	  HAL_Delay(100);
 
   	  /*READ CALIBRATION DATA ENDS*/
@@ -514,10 +522,14 @@ switch(state){
 				  break;
 
 			  case UART_COM_READ_VOLT_ACTIVE_CHANNELS:
+				  ConfADC(active_channels);
 				  for(i = 0; i < 8; i++){
 					  if(active_channels & (1 << i)){
-						  //TRANSMIT DUMMY DATA // DBG
-						  HAL_UART_Transmit(&huart1, &cycle_count, 1, COMM_TIMEOUT);
+						  HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_RESET);
+						  HAL_SPI_Receive(&hspi1, &adc_result, 1, COMM_TIMEOUT);
+						  HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_SET);
+						  adc_result = adc_result & 0x0FFF;
+						  HAL_UART_Transmit(&huart1, &adc_result, 1, COMM_TIMEOUT);
 					  }
 
 				  }
