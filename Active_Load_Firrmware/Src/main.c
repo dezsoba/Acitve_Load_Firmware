@@ -284,7 +284,7 @@ void ConfADC(uint8_t active_channels){
 	HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_SET);
 	control_register = 0x0000;
 	HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_RESET);
-	HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);		//first conversion
+	HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);		//first conversion, dummy message
 	HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_SET);
 }
 
@@ -331,7 +331,7 @@ int main(void)
 		uint8_t i = 0;
 
 		uint16_t adc_result = 0;
-
+		uint8_t adc_com_buffer = 0;
 
 		uint8_t eeprom_buffer[32] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 	//	uint16_t eeprom_values_dev[16] = {0, 0, 0, 0, 0, 0, 0, 0, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF, 0x0FFF};
@@ -529,11 +529,12 @@ switch(state){
 						  HAL_SPI_Receive(&hspi1, &adc_result, 1, COMM_TIMEOUT);
 						  HAL_GPIO_WritePin(nCS_GPIO_Port, nCS_Pin, GPIO_PIN_SET);
 						  adc_result = adc_result & 0x0FFF;
-						  HAL_UART_Transmit(&huart1, &adc_result, 1, COMM_TIMEOUT);
+						  adc_com_buffer = ((adc_result & 0xFF00) >> 8);
+						  HAL_UART_Transmit(&huart1, &adc_com_buffer, 1, COMM_TIMEOUT);
+						  adc_com_buffer = (adc_result & 0x00FF);
+						  HAL_UART_Transmit(&huart1, &adc_com_buffer, 1, COMM_TIMEOUT);
 					  }
-
 				  }
-
 				  break;
 			  }
 

@@ -1,158 +1,10 @@
-14:34:46 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
-make all 
-'Building file: ../Src/main.c'
-'Invoking: MCU GCC Compiler'
-C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
-../Src/main.c: In function 'OverTempProt':
-../Src/main.c:242:65: warning: passing argument 5 of 'HAL_I2C_Mem_Write' from incompatible pointer type [-Wincompatible-pointer-types]
-   HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, error_number + 1, 1, &errorlog, 4, COMM_TIMEOUT);
-                                                                 ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:503:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint8_t (*)[4] {aka unsigned char (*)[4]}'
- HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c: In function 'FanStuckProt':
-../Src/main.c:265:65: warning: passing argument 5 of 'HAL_I2C_Mem_Write' from incompatible pointer type [-Wincompatible-pointer-types]
-   HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, error_number + 1, 1, &errorlog, 4, COMM_TIMEOUT);
-                                                                 ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:503:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint8_t (*)[4] {aka unsigned char (*)[4]}'
- HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c: In function 'SendShiftReg':
-../Src/main.c:274:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
-  HAL_SPI_Transmit(&hspi2, shift_reg_data, 2, COMM_TIMEOUT);
-                           ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:441:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
- HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c: In function 'ConfADC':
-../Src/main.c:283:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
-  HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);
-                           ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:441:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
- HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c:287:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
-  HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);  //first conversion
-                           ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:441:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
- HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c: In function 'main':
-../Src/main.c:372:36: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
-          HAL_UART_Receive(&huart1, &received_command, 1, COMM_TIMEOUT);
-                                    ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:648:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
- HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c:377:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
-         HAL_UART_Transmit(&huart1, &received_command, 1, COMM_TIMEOUT);
-                                    ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:647:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
- HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c:386:36: warning: passing argument 2 of 'HAL_UART_Receive_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
-      HAL_UART_Receive_DMA(&huart1, &received_command, 3);
-                                    ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:652:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
- HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
-                   ^
-../Src/main.c:397:52: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
-      HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_2, 0, 1, calib_channel_code_0A, 16, COMM_TIMEOUT);
-                                                    ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:504:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
- HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c:398:53: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
-      HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_2, 16, 1, calib_channel_code_2A, 16, COMM_TIMEOUT);
-                                                     ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:504:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
- HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c:456:72: warning: passing argument 5 of 'HAL_I2C_Mem_Write' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-       HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_2, received_command[1], 1, &received_command[2], 1, COMM_TIMEOUT);
-                                                                        ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:503:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t * {aka volatile unsigned char *}'
- HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c:529:33: warning: passing argument 2 of 'HAL_SPI_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
-         HAL_SPI_Receive(&hspi1, &adc_result, 1, COMM_TIMEOUT);
-                                 ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:442:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
- HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c:532:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
-         HAL_UART_Transmit(&huart1, &cycle_count, 1, COMM_TIMEOUT);
-                                    ^
-In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
-                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
-                 from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:647:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint32_t * {aka volatile long unsigned int *}'
- HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
-                   ^
-../Src/main.c:327:12: warning: variable 'rpm_fan2' set but not used [-Wunused-but-set-variable]
-   uint16_t rpm_fan2 = 0;
-            ^
-'Finished building: ../Src/main.c'
-' '
-'Building file: ../Src/spi.c'
-'Invoking: MCU GCC Compiler'
-C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/spi.d" -MT"Src/spi.o" -o "Src/spi.o" "../Src/spi.c"
-'Finished building: ../Src/spi.c'
-' '
-'Building target: Active_Load_Firrmware.elf'
-'Invoking: MCU GCC Linker'
-arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F411RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "Active_Load_Firrmware.elf" @"objects.list"  
-'Finished building target: Active_Load_Firrmware.elf'
-' '
-make --no-print-directory post-build
-'Generating binary and Printing size information:'
-arm-none-eabi-objcopy -O binary "Active_Load_Firrmware.elf" "Active_Load_Firrmware.bin"
-arm-none-eabi-size "Active_Load_Firrmware.elf"
-   text	   data	    bss	    dec	    hex	filename
-  16924	     12	   2500	  19436	   4bec	Active_Load_Firrmware.elf
-' '
-14:34:54 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+15:27:11 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
 make all 
 make: Nothing to be done for `all'.
-14:36:43 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+15:27:15 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+make all 
+make: Nothing to be done for `all'.
+15:50:11 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
 make all 
 'Building file: ../Src/main.c'
 'Invoking: MCU GCC Compiler'
@@ -199,7 +51,7 @@ C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_
  HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^
 ../Src/main.c:287:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
-  HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);  //first conversion
+  HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);  //first conversion, dummy message
                            ^
 In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
                  from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
@@ -271,14 +123,141 @@ In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load
 C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:442:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
  HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^
-../Src/main.c:532:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
-         HAL_UART_Transmit(&huart1, &adc_result, 1, COMM_TIMEOUT);
+../Src/main.c:327:12: warning: variable 'rpm_fan2' set but not used [-Wunused-but-set-variable]
+   uint16_t rpm_fan2 = 0;
+            ^
+'Finished building: ../Src/main.c'
+' '
+'Building target: Active_Load_Firrmware.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F411RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "Active_Load_Firrmware.elf" @"objects.list"  
+'Finished building target: Active_Load_Firrmware.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "Active_Load_Firrmware.elf" "Active_Load_Firrmware.bin"
+arm-none-eabi-size "Active_Load_Firrmware.elf"
+   text	   data	    bss	    dec	    hex	filename
+  16968	     12	   2500	  19480	   4c18	Active_Load_Firrmware.elf
+' '
+15:50:49 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+make all 
+'Building file: ../Src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c: In function 'OverTempProt':
+../Src/main.c:242:65: warning: passing argument 5 of 'HAL_I2C_Mem_Write' from incompatible pointer type [-Wincompatible-pointer-types]
+   HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, error_number + 1, 1, &errorlog, 4, COMM_TIMEOUT);
+                                                                 ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:503:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint8_t (*)[4] {aka unsigned char (*)[4]}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c: In function 'FanStuckProt':
+../Src/main.c:265:65: warning: passing argument 5 of 'HAL_I2C_Mem_Write' from incompatible pointer type [-Wincompatible-pointer-types]
+   HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, error_number + 1, 1, &errorlog, 4, COMM_TIMEOUT);
+                                                                 ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:503:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint8_t (*)[4] {aka unsigned char (*)[4]}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c: In function 'SendShiftReg':
+../Src/main.c:274:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+  HAL_SPI_Transmit(&hspi2, shift_reg_data, 2, COMM_TIMEOUT);
+                           ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:441:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c: In function 'ConfADC':
+../Src/main.c:283:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+  HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);
+                           ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:441:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:287:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+  HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);  //first conversion, dummy message
+                           ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:441:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c: In function 'main':
+../Src/main.c:372:36: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+          HAL_UART_Receive(&huart1, &received_command, 1, COMM_TIMEOUT);
                                     ^
 In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
                  from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
                  from ../Src/main.c:34:
-C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:647:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:648:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
+ HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:377:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+         HAL_UART_Transmit(&huart1, &received_command, 1, COMM_TIMEOUT);
+                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:647:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
  HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:386:36: warning: passing argument 2 of 'HAL_UART_Receive_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+      HAL_UART_Receive_DMA(&huart1, &received_command, 3);
+                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:652:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
+ HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+                   ^
+../Src/main.c:397:52: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
+      HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_2, 0, 1, calib_channel_code_0A, 16, COMM_TIMEOUT);
+                                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:504:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:398:53: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
+      HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_2, 16, 1, calib_channel_code_2A, 16, COMM_TIMEOUT);
+                                                     ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:504:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:456:72: warning: passing argument 5 of 'HAL_I2C_Mem_Write' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+       HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_2, received_command[1], 1, &received_command[2], 1, COMM_TIMEOUT);
+                                                                        ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:503:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t * {aka volatile unsigned char *}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:529:33: warning: passing argument 2 of 'HAL_SPI_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+         HAL_SPI_Receive(&hspi1, &adc_result, 1, COMM_TIMEOUT);
+                                 ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:442:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
                    ^
 ../Src/main.c:327:12: warning: variable 'rpm_fan2' set but not used [-Wunused-but-set-variable]
    uint16_t rpm_fan2 = 0;
@@ -295,5 +274,141 @@ make --no-print-directory post-build
 arm-none-eabi-objcopy -O binary "Active_Load_Firrmware.elf" "Active_Load_Firrmware.bin"
 arm-none-eabi-size "Active_Load_Firrmware.elf"
    text	   data	    bss	    dec	    hex	filename
-  16924	     12	   2500	  19436	   4bec	Active_Load_Firrmware.elf
+  16968	     12	   2500	  19480	   4c18	Active_Load_Firrmware.elf
+' '
+15:51:40 **** Incremental Build of configuration Debug for project Active_Load_Firrmware ****
+make all 
+'Building file: ../Src/main.c'
+'Invoking: MCU GCC Compiler'
+C:\Users\bsarkozy\Desktop\Active_Load_Firmware\Acitve_Load_Firmware\Active_Load_Firrmware\Debug
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -D__weak="__attribute__((weak))" -D__packed="__attribute__((__packed__))" -DUSE_HAL_DRIVER -DSTM32F411xE -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/Legacy" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Include" -I"C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/CMSIS/Device/ST/STM32F4xx/Include"  -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -fmessage-length=0 -MMD -MP -MF"Src/main.d" -MT"Src/main.o" -o "Src/main.o" "../Src/main.c"
+../Src/main.c: In function 'OverTempProt':
+../Src/main.c:242:65: warning: passing argument 5 of 'HAL_I2C_Mem_Write' from incompatible pointer type [-Wincompatible-pointer-types]
+   HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, error_number + 1, 1, &errorlog, 4, COMM_TIMEOUT);
+                                                                 ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:503:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint8_t (*)[4] {aka unsigned char (*)[4]}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c: In function 'FanStuckProt':
+../Src/main.c:265:65: warning: passing argument 5 of 'HAL_I2C_Mem_Write' from incompatible pointer type [-Wincompatible-pointer-types]
+   HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_4, error_number + 1, 1, &errorlog, 4, COMM_TIMEOUT);
+                                                                 ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:503:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint8_t (*)[4] {aka unsigned char (*)[4]}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c: In function 'SendShiftReg':
+../Src/main.c:274:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+  HAL_SPI_Transmit(&hspi2, shift_reg_data, 2, COMM_TIMEOUT);
+                           ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:441:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c: In function 'ConfADC':
+../Src/main.c:283:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+  HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);
+                           ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:441:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:287:27: warning: passing argument 2 of 'HAL_SPI_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+  HAL_SPI_Transmit(&hspi1, &control_register, 1, COMM_TIMEOUT);  //first conversion, dummy message
+                           ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:441:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_SPI_Transmit(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c: In function 'main':
+../Src/main.c:372:36: warning: passing argument 2 of 'HAL_UART_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+          HAL_UART_Receive(&huart1, &received_command, 1, COMM_TIMEOUT);
+                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:648:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
+ HAL_StatusTypeDef HAL_UART_Receive(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:377:36: warning: passing argument 2 of 'HAL_UART_Transmit' from incompatible pointer type [-Wincompatible-pointer-types]
+         HAL_UART_Transmit(&huart1, &received_command, 1, COMM_TIMEOUT);
+                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:647:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
+ HAL_StatusTypeDef HAL_UART_Transmit(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:386:36: warning: passing argument 2 of 'HAL_UART_Receive_DMA' from incompatible pointer type [-Wincompatible-pointer-types]
+      HAL_UART_Receive_DMA(&huart1, &received_command, 3);
+                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:373:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:652:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t (*)[3] {aka volatile unsigned char (*)[3]}'
+ HAL_StatusTypeDef HAL_UART_Receive_DMA(UART_HandleTypeDef *huart, uint8_t *pData, uint16_t Size);
+                   ^
+../Src/main.c:397:52: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
+      HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_2, 0, 1, calib_channel_code_0A, 16, COMM_TIMEOUT);
+                                                    ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:504:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:398:53: warning: passing argument 5 of 'HAL_I2C_Mem_Read' from incompatible pointer type [-Wincompatible-pointer-types]
+      HAL_I2C_Mem_Read(&hi2c1, EEPROM_PAGE_2, 16, 1, calib_channel_code_2A, 16, COMM_TIMEOUT);
+                                                     ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:504:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Read(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:456:72: warning: passing argument 5 of 'HAL_I2C_Mem_Write' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+       HAL_I2C_Mem_Write(&hi2c1, EEPROM_PAGE_2, received_command[1], 1, &received_command[2], 1, COMM_TIMEOUT);
+                                                                        ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:329:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c.h:503:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'volatile uint8_t * {aka volatile unsigned char *}'
+ HAL_StatusTypeDef HAL_I2C_Mem_Write(I2C_HandleTypeDef *hi2c, uint16_t DevAddress, uint16_t MemAddress, uint16_t MemAddSize, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:529:33: warning: passing argument 2 of 'HAL_SPI_Receive' from incompatible pointer type [-Wincompatible-pointer-types]
+         HAL_SPI_Receive(&hspi1, &adc_result, 1, COMM_TIMEOUT);
+                                 ^
+In file included from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Inc/stm32f4xx_hal_conf.h:365:0,
+                 from C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:48,
+                 from ../Src/main.c:34:
+C:/Users/bsarkozy/Desktop/Active_Load_Firmware/Acitve_Load_Firmware/Active_Load_Firrmware/Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:442:19: note: expected 'uint8_t * {aka unsigned char *}' but argument is of type 'uint16_t * {aka short unsigned int *}'
+ HAL_StatusTypeDef HAL_SPI_Receive(SPI_HandleTypeDef *hspi, uint8_t *pData, uint16_t Size, uint32_t Timeout);
+                   ^
+../Src/main.c:327:12: warning: variable 'rpm_fan2' set but not used [-Wunused-but-set-variable]
+   uint16_t rpm_fan2 = 0;
+            ^
+'Finished building: ../Src/main.c'
+' '
+'Building target: Active_Load_Firrmware.elf'
+'Invoking: MCU GCC Linker'
+arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -mfloat-abi=hard -mfpu=fpv4-sp-d16 -specs=nosys.specs -specs=nano.specs -T"../STM32F411RETx_FLASH.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "Active_Load_Firrmware.elf" @"objects.list"  
+'Finished building target: Active_Load_Firrmware.elf'
+' '
+make --no-print-directory post-build
+'Generating binary and Printing size information:'
+arm-none-eabi-objcopy -O binary "Active_Load_Firrmware.elf" "Active_Load_Firrmware.bin"
+arm-none-eabi-size "Active_Load_Firrmware.elf"
+   text	   data	    bss	    dec	    hex	filename
+  16968	     12	   2500	  19480	   4c18	Active_Load_Firrmware.elf
 ' '
