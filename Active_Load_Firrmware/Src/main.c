@@ -296,18 +296,32 @@ void SetDAC(uint8_t dac_ch_number, uint8_t current_code_1, uint8_t current_code_
 	extref_setup[1] = 0b00000000;
 	extref_setup[2] = 0b00000000;
 
+	HAL_Delay(5); //TEST
+
 	HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSync, GPIO_PIN_RESET);
+
+	HAL_Delay(5); //TEST
+
 	HAL_SPI_Transmit(&hspi2, extref_setup, 3, COMM_TIMEOUT);
+
+	HAL_Delay(5); //TEST
+
 	HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSync, GPIO_PIN_SET);
+
+	HAL_Delay(5); //TEST
 
 	current_code = ((current_code_1 << 8) | current_code_2);
 	dac_msg[0] = dac_ch_number & 0x01;
 	dac_msg[1] = ((current_code & 0x0FF0) >> 4);		//extract higher 8 bit
 	dac_msg[2] = ((current_code & 0x000F) << 4);		//extract lower 4 bit
 
+	HAL_Delay(10); //TEST
+
 	HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSync, GPIO_PIN_RESET);
 	HAL_SPI_Transmit(&hspi2, dac_msg, 3, COMM_TIMEOUT);
 	HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSync, GPIO_PIN_SET);
+
+	HAL_Delay(10); //TEST
 }
 
 void UpdateDAC(){
