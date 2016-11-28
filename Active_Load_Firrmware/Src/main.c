@@ -290,7 +290,16 @@ void ConfADC(uint8_t active_channels){
 
 void SetDAC(uint8_t dac_ch_number, uint8_t current_code_1, uint8_t current_code_2, uint16_t nSync){
 	uint16_t current_code;
+	uint8_t extref_setup[3];
 	uint8_t dac_msg[3] = { 0 }; 					//24 bits
+	extref_setup[0] = 0b00111111;
+	extref_setup[1] = 0b00000000;
+	extref_setup[2] = 0b00000000;
+
+	HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSync, GPIO_PIN_RESET);
+	HAL_SPI_Transmit(&hspi2, extref_setup, 3, COMM_TIMEOUT);
+	HAL_GPIO_WritePin(nSYNC_1_GPIO_Port, nSync, GPIO_PIN_SET);
+
 	current_code = ((current_code_1 << 8) | current_code_2);
 	dac_msg[0] = dac_ch_number & 0x01;
 	dac_msg[1] = ((current_code & 0x0FF0) >> 4);		//extract higher 8 bit
