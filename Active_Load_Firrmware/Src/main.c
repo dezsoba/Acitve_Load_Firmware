@@ -208,7 +208,7 @@ void ChangeSPI2_CLK_edge_POS(){
 	}
 }
 
-void inline SetFanSpeed(uint8_t heatsink_temp, uint16_t rpm_fan1){
+void SetFanSpeed(uint8_t heatsink_temp, uint16_t rpm_fan1){
 	int16_t delta_duty;
 	uint16_t target_rpm;
 	int16_t current_duty = __HAL_TIM_GET_COMPARE(&htim11, TIM_CHANNEL_1);
@@ -586,14 +586,12 @@ switch(state){
 		  __HAL_TIM_SET_COUNTER(&htim5,0);
 		  SetFanSpeed(heatsink_temp, rpm_fan1);
 
-		  /* MEGHALT DC/DC, ADDIG NINCS ILYEN
 		  if(heatsink_temp > TEMP_LIMIT){
 			  OverTempProt(&heatsink_temp, &state);
 		  }
 		  if(rpm_fan1 <= 100 || rpm_fan2 <= 100){
 			  FanStuckProt(&rpm_fan1, &rpm_fan2, &state);
 		  }
-		  */
 
 		  HAL_GPIO_TogglePin(USER_LED_GPIO_Port, USER_LED_Pin);
 
